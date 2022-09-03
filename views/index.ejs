@@ -17,10 +17,13 @@
             <% jokes.forEach( el => { %>
                     <li class='jokeItem' data-id='<%=el._id%>'>
                         <span><%= el.joke %></span>
-                        <span>like</span>
+                        <span class="likes">Score: <%= el.likes %></span>
+                        <span class="like">like</span>
+                        <span class="dislike">dislike</span>
                     </li>
             <% }) %>    
             </ul>
     </section> 
+    <script src="js/main.js"></script>
 </body>
 </html>

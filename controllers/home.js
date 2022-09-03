@@ -14,5 +14,30 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
+    addLike: async (req, res)=>{
+        const likes = +req.body.likes
+        try{
+            await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
+                likes: likes+1
+            })
+            console.log('like +1')
+            res.json('like +1')
+        }catch(err){
+            console.log(err)
+        }
+    },
+    removeLike: async (req, res)=>{
+        const likes = +req.body.likes
+        console.log(likes)
+        try{
+            await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
+                likes: likes-1
+            })
+            console.log('like -1')
+            res.json('like -1')
+        }catch(err){
+            console.log(err)
+        }
+    },
 }
