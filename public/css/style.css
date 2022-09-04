@@ -69,7 +69,7 @@ button:hover {
   text-decoration-style: double;
   padding: 0px 0px 0px 10px;
 }
-#individualJoke {
+.individualJoke {
   flex-direction: column;
   background-color: rgb(124, 89, 54);
 }
@@ -82,7 +82,7 @@ button:hover {
 }
 #individualJokeAuthandDate {
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 #jokeDetails {
   flex-direction: row;
@@ -94,12 +94,10 @@ button:hover {
   text-decoration-style: double;
   padding: 0px 0px 0px 10px;
 }
-#date {
+.date, .author{
     color: rgb(215, 184, 137);
 }
-#author {
-    color: rgb(215, 184, 137);
-}
+
 #instructions {
   color: rgb(246, 234, 58);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -115,4 +113,8 @@ button:hover {
 }
 .not {
   text-decoration: underline;
+}
+
+li{
+  list-style: none;
 }
