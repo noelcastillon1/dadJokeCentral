@@ -25,28 +25,6 @@ module.exports = {
             console.log(err)
         }
     },
-    // markComplete: async (req, res)=>{
-    //     try{
-    //         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-    //             completed: true
-    //         })
-    //         console.log('Marked Complete')
-    //         res.json('Marked Complete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
-    // markIncomplete: async (req, res)=>{
-    //     try{
-    //         await Todo.findOneAndUpdate({_id:req.body.todoIdFromJSFile},{
-    //             completed: false
-    //         })
-    //         console.log('Marked Incomplete')
-    //         res.json('Marked Incomplete')
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // },
     deleteJoke: async (req, res)=>{
         console.log(req.body.jokeIdFromJSFile)
         try{
