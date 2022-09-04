@@ -6,6 +6,7 @@ const now = moment().format()
 
 module.exports = {
     getJokes: async (req,res)=>{
+        
         console.log(req.user)
         try{
             const jokeItems = await Joke.find({userId:req.user.id})

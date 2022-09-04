@@ -1,10 +1,120 @@
+body {
+  margin: 0;
+  background-color: rgb(196, 164, 132);
+}
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(130, 99, 68);
+  border-radius: 10px;
+  margin: 20px;
+}
+#titleSection{
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(130, 99, 68, 0);
+}
+
 h1{
-    color: red;
+  align-items: center;
 }
-.completed{
-    text-decoration: line-through;
-    color: gray;
+#dadLaughingImg{
+  width: 20%;
+  height: 20%;
 }
-.not{
-    text-decoration: underline;
+#loginArea{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 30px;
+  padding: 20px;
+
+}
+button {
+  font-size: 2em;
+  background-color: rgb(176, 132, 88);
+  color: white;
+  border-color: rgb(85, 65, 45);
+  border-width: 7px;
+  border-radius: 10px;
+}
+.likeButton{
+  visibility: hidden;
+}
+.auth {
+  margin: 10px;
+}
+button:hover {
+  background-color: rgb(151, 109, 68);
+  color: white;
+}
+#title {
+  color: rgb(246, 234, 58);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 5em;
+  text-decoration-style: double;
+  padding: 0px 0px 0px 10px;
+}
+#recentJokesTitle {
+  color: rgb(216, 205, 54);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  text-decoration-style: double;
+  padding: 0px 0px 0px 10px;
+}
+.individualJoke {
+  flex-direction: column;
+  background-color: rgb(124, 89, 54);
+}
+#jokeArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 30px;
+  padding: 20px;
+}
+#individualJokeAuthandDate {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+#jokeDetails {
+  flex-direction: row;
+}
+.jokeDetails {
+  color: rgb(246, 234, 58);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 1.5em;
+  text-decoration-style: double;
+  padding: 0px 0px 0px 10px;
+}
+.date, .author{
+    color: rgb(215, 184, 137);
+}
+
+#instructions {
+  color: rgb(246, 234, 58);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  text-decoration-style: double;
+  padding: 0px 0px 0px 10px;
+}
+
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+.not {
+  text-decoration: underline;
+}
+
+li{
+  list-style: none;
 }
