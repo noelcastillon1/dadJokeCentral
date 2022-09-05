@@ -1,6 +1,11 @@
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
+//This file has a user schema which outlines what will be saved in the data base everytime a new user is created.
+//called in controllers/auth.js line 82
+//There is some extra stuff underneath the schema that relates to password hashing to make add an extra layer of security when saving passwords to the database but to be honest I do not know how it works 
+
+
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
