@@ -2,6 +2,8 @@ const LocalStrategy = require('passport-local').Strategy
 const mongoose = require('mongoose')
 const User = require('../models/User')
 
+//calls passport local strategy which enables you to build authentifcation for your app. Here there is some login validation like not being able to find an email or having an incorrect password
+
 module.exports = function (passport) {
   passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User.findOne({ email: email.toLowerCase() }, (err, user) => {
