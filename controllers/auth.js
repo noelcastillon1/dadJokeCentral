@@ -2,6 +2,9 @@ const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
 
+
+//This first function checks to see if a user is logged in and if so redirects them to profile.ejs and if not renders the login.ejs. It is called in the routes folder in the main.js file line 11
+
  exports.getLogin = (req, res) => {
     if (req.user) {
       return res.redirect('/profile')
@@ -11,6 +14,8 @@ const User = require('../models/User')
     })
   }
   
+//this validates a user login, making sure that emails and passwords match for login, if anything is invalid it bumps you back to the login, if it matches, to loads the profile page. called in routes/main.js line 12
+
   exports.postLogin = (req, res, next) => {
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
@@ -36,6 +41,8 @@ const User = require('../models/User')
     })(req, res, next)
   }
   
+//logs a user out of its session, called in routes/main.js line 13
+
   exports.logout = (req, res) => {
     req.logout(() => {
       console.log('User has logged out.')
@@ -47,6 +54,8 @@ const User = require('../models/User')
     })
   }
   
+//This function checks to see if a user is already logged in which would redirect them to the profile page, if not it renders the signup.ejs. Called in routes/main.js line 14
+
   exports.getSignup = (req, res) => {
     if (req.user) {
       return res.redirect('/profile')
@@ -56,6 +65,8 @@ const User = require('../models/User')
     })
   }
   
+//This function checks for valid email addresses and valid passwords, then if everything is valid creates a new user object using the user schema from models/User.js then it checks to see if the user email already exists to make sure there are not any duplicates. If everything checks out the user is saved in the database.
+
   exports.postSignup = (req, res, next) => {
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })

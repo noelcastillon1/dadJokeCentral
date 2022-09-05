@@ -14,9 +14,9 @@ require('dotenv').config({path: './config/.env'})
 
 // Passport config
 require('./config/passport')(passport)
-
+//connects you to data base in config/database.js
 connectDB()
-
+//sets views as ejs files and sets public files as static file
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -37,7 +37,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(flash())
-  
+//forwards url requests of each root route to routes folder 
 app.use('/', mainRoutes)
 app.use('/profile', jokeRoutes)
  

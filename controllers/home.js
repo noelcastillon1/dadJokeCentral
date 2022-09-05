@@ -1,5 +1,9 @@
 const Joke = require('../models/Joke')
 
+//this module contains four functions, the first renders the index.ejs file this is called in the routes/main.js line 7. 
+//The second function grabs all the jokes from the database and renders them in the inex.ejs file as the jokes object the function is called in the routes/main.js line 8 
+//The last two functions update the amount of likes a particular joke has by taking in the amount of likes from the main.js file and increasing them by one or decreasing them by 1, function is called in routes/main.js line 9 and 10
+
 module.exports = {
     getIndex: (req,res)=>{
         res.render('index.ejs')
