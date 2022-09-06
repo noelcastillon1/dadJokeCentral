@@ -1,5 +1,5 @@
 const deleteBtn = document.querySelectorAll('.del')
-const jokeItem = document.querySelectorAll('.jokeItem')
+const jokeItem = document.querySelectorAll('span.not')
 const jokeLike = document.querySelectorAll('.like')
 // const jokeDislike = document.querySelectorAll('.dislike')
 const allJokes = document.querySelectorAll('.allJoke')
@@ -24,7 +24,9 @@ Array.from(userLikedJokes).forEach((it) => {
 console.log(likedJokesIdArr)
 
 likesArr = likesArr.map(it => +it)
+
 console.log(likesArr)
+
 //creates an event listener for all elements with '.del' class
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteJoke)
@@ -45,7 +47,6 @@ Array.from(jokeLike).forEach((el, ix)=>{
 
 async function deleteJoke(){
     const jokeId = this.parentNode.dataset.id
-    console.log(jokeId)
     try{
         const response = await fetch('profile/deleteJoke', {
             method: 'delete',
@@ -60,13 +61,11 @@ async function deleteJoke(){
     }catch(err){
         console.log(err)
     }
-
-
 }
 
 
 async function addLike(){
-
+    const jokeId = this.parentNode.dataset.id
     const jokeId = allJokes[this.classList[this.classList.length -1]].dataset.id
     const likesIx = Number(this.classList[this.classList.length -1])
     console.log(jokeId)
@@ -74,6 +73,7 @@ async function addLike(){
         console.log('already liked')
         return 
     }
+
 
     try{
         const response = await fetch('profile/like', {
@@ -90,9 +90,7 @@ async function addLike(){
     }catch(err){
         console.log(err)
     }
-  
 }
-
 
 // async function removeLike(){
 //     //In the above array function where I added an event listener to each of the like and dislike buttons I also added an index number to the class list which I can access using the classList function. I then use this classlist index to match jokes with likes to be able to pass in the appropraite amount of likes so the controller function in home.js can update likes in the database
