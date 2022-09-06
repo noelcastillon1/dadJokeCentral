@@ -10,7 +10,7 @@ const User = require('../models/User')
       title: 'Login'
     })
   }
-  
+
   exports.postLogin = (req, res, next) => {
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })

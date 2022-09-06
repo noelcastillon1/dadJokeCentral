@@ -1,29 +1,24 @@
-<<<<<<< HEAD
-# Introduction
+# Welcome to Dad Joke Central!
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
-
----
-
-> Be sure to add that lovely star 😀 and fork it for your own copy
+A community collection of wholesome, groan-inducing quips. Share your favorite knee-slappers and give a +1 vote to every gag that busted you up! 
 
 ---
 
 # Objectives
 
-- It's a beginner level app created to understand how MVC concept and logins are added
+- Our team sought to create an app that would allow dads to find community amongst like-minded practical jokesters. Dad Joke Central will serve as a cornerstone of the dad community by collecting user-created dad jokes, allowing members to determine which jokes showed the most paternalistic sense of humor, and allowing users to manage personal user profiles. 
 
 ---
 
 # Who is this for? 
 
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
+- With our simple user interface, we invite any user to share some goofs and gaffs.
 
 ---
 
 # Packages/Dependencies used 
 
-bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator
+- bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator
 
 ---
 
@@ -33,19 +28,12 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
 
 ---
 
-# Things to add
+# Optimization
 
-- Create a `.env` file and add the following as `key: value` 
-  - PORT: 2121 (can be any port example: 3000) 
-  - DB_STRING: `your database URI` 
+- Given more resources to invest in this project, our team would have like to: 
+  - Improve the voting system, with the option to remove likes and add dislikes to a post
+  - Add a sort function where users can order posts by parameters such as total likes and date posted
+
  ---
  
- Have fun testing and improving it! 😎
-
-
-=======
-# dadJokeCentral
-leon todo app is now a dad joke app
-
-### tech used: mongodb, express, ejs
->>>>>>> 2915b167fd112edcf7859504c416a498c76589ee
+Let's git moving! Share your jokes today! 🧓
