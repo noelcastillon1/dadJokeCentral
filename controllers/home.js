@@ -21,7 +21,6 @@ module.exports = {
     },
     addLike: async (req, res)=>{
         const likes = +req.body.likes
-        console.log(req.body.likes)
         try{
             await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
                 likes: likes+1
