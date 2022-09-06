@@ -7,6 +7,8 @@ router.get('/', ensureAuth, jokeController.getJokes)
 //is called when a user hits submit when adding a new joke and then called the createJoke function in controllers/jokes.js line 25
 router.post('/createjoke', jokeController.createJoke)
 
+router.put('/like', jokeController.addLike)
+router.put('/dislike', jokeController.removeLike)
 // router.put('/markComplete', todosController.markComplete)
 
 // router.put('/markIncomplete', todosController.markIncomplete)

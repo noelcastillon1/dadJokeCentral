@@ -1,8 +1,7 @@
 const Joke = require('../models/Joke')
+const User = require('../models/User')
 
-//this module contains four functions, the first renders the index.ejs file this is called in the routes/main.js line 7. 
-//The second function grabs all the jokes from the database and renders them in the inex.ejs file as the jokes object the function is called in the routes/main.js line 8 
-//The last two functions update the amount of likes a particular joke has by taking in the amount of likes from the main.js file and increasing them by one or decreasing them by 1, function is called in routes/main.js line 9 and 10
+
 
 module.exports = {
     getIndex: (req,res)=>{
@@ -19,29 +18,36 @@ module.exports = {
             console.log(err)
         }
     },
-    addLike: async (req, res)=>{
-        const likes = +req.body.likes
-        try{
-            await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
-                likes: likes+1
-            })
-            console.log('like +1')
-            res.json('like +1')
-        }catch(err){
-            console.log(err)
-        }
-    },
-    removeLike: async (req, res)=>{
-        const likes = +req.body.likes
-        console.log(likes)
-        try{
-            await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
-                likes: likes-1
-            })
-            console.log('like -1')
-            res.json('like -1')
-        }catch(err){
-            console.log(err)
-        }
-    },
+    // addLike: async (req, res)=>{
+    //     const likes = +req.body.likes
+    //     const jokeId = req.body.jokeIdFromJSFile
+    //     const likedArr = req.user.liked
+    //     console.log(req.body.likes, req.user.liked, jokeId)
+    //     try{
+    //         await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
+    //             likes: likes+1
+    //         })
+    //         await User.findOneAndUpdate({_id:req.user._id}, {liked: [...likedArr, jokeId] })
+    //         console.log('like +1')
+    //         res.json('like +1')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // },
+    // removeLike: async (req, res)=>{
+    //     const likes = +req.body.likes
+    //     const jokeId = req.body.jokeIdFromJSFile
+    //     const dislikedArr = req.user.liked
+    //     console.log(req.body.likes, req.user.disliked, jokeId)
+    //     try{
+    //         await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
+    //             likes: likes-1
+    //         })
+    //         await User.findOneAndUpdate({_id:req.user._id}, {disliked: [...dislikedArr, jokeId] })
+    //         console.log('like -1')
+    //         res.json('like -1')
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // },
 }

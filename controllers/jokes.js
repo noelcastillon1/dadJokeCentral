@@ -1,14 +1,8 @@
 const Joke = require('../models/Joke')
+const User = require('../models/User')
 const moment = require('moment')
 const now = moment().format("MMM Do YY")
 
-//These functions are displayed on the profile.ejs page.
-//The first gets all jokes that relate to the user who has logged in. Called on routes/joke.js line 6 
-//The second creats a joke, adding a new joke using the Joke schema which can be found in models/Joke, this creat function is called in routes/joke line 8
-//The third function takes in a joke id and deletes the joke if you find that it is no longer funny called in routes/joke.js line 14
-
-//planning on adding a 'PUT' function to update jokes you have already main
-//planning on adding a 'GET' for all jokes so a user can see all jokes on their profile 
 
 module.exports = {
     getJokes: async (req,res)=>{
@@ -16,8 +10,14 @@ module.exports = {
         console.log(req.user)
         try{
             const jokeItems = await Joke.find({userId:req.user.id})
-            // const itemsLeft = await Todo.countDocuments({userId:req.user.id,completed: false})
-            res.render('profile.ejs', {jokes: jokeItems, user: req.user})
+
+            const allJokes = await Joke.find({})
+    
+            const likedJokeIds = await req.user.liked
+            const likedJokes = await Joke.find({ '_id': { $in: likedJokeIds } });
+            console.log(likedJokeIds)
+
+            res.render('profile.ejs', {jokes: jokeItems, user: req.user, jokesAll: allJokes, likedJokes: likedJokes})
         }catch(err){
             console.log(err)
         }
@@ -27,6 +27,38 @@ module.exports = {
             await Joke.create({joke: req.body.jokeItem, likes: 0, date: now, userId: req.user.id, userName: req.user.userName})
             console.log('Joke has been added!')
             res.redirect('/profile')
+        }catch(err){
+            console.log(err)
+        }
+    },
+    addLike: async (req, res)=>{
+        const likes = +req.body.likes
+        const jokeId = req.body.jokeIdFromJSFile
+        const likedArr = req.user.liked
+        console.log(req.body.likes, req.user.liked, jokeId)
+        try{
+            await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
+                likes: likes+1
+            })
+            await User.findOneAndUpdate({_id:req.user._id}, {liked: [...likedArr, jokeId] })
+            console.log('like +1')
+            res.json('like +1')
+        }catch(err){
+            console.log(err)
+        }
+    },
+    removeLike: async (req, res)=>{
+        const likes = +req.body.likes
+        const jokeId = req.body.jokeIdFromJSFile
+        const dislikedArr = req.user.liked
+        console.log(req.body.likes, req.user.disliked, jokeId)
+        try{
+            await Joke.findOneAndUpdate({_id:req.body.jokeIdFromJSFile},{
+                likes: likes-1
+            })
+            await User.findOneAndUpdate({_id:req.user._id}, {disliked: [...dislikedArr, jokeId] })
+            console.log('like -1')
+            res.json('like -1')
         }catch(err){
             console.log(err)
         }
