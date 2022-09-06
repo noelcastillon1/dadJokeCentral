@@ -1,21 +1,18 @@
 const deleteBtn = document.querySelectorAll('.del')
-const jokeItem = document.querySelectorAll('.jokeItem')
+const jokeItem = document.querySelectorAll('span.not')
 const jokeLike = document.querySelectorAll('.like')
 const jokeDislike = document.querySelectorAll('.dislike')
-const likes = document.querySelectorAll('.score')
-let likesArr = []
+const likes = document.querySelectorAll('.likes')
+const likesArr = []
+
 //creates an array out all elements that have the class '.likes', then uses .forEach to push the inner text value of the element to likesArr
 Array.from(likes).forEach(it => {
    let score = it.innerText
-   likesArr.push(score)
+   likesArr.push(score[score.length -1])
 })
 
-Array.from(jokeItem).forEach((it, ix) => {
-    it.classList = it.classList +` ${ix}`
-})
-
-likesArr = likesArr.map(it => +it)
 console.log(likesArr)
+
 //creates an event listener for all elements with '.del' class
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteJoke)
@@ -38,7 +35,6 @@ Array.from(jokeDislike).forEach((el, ix)=>{
 
 async function deleteJoke(){
     const jokeId = this.parentNode.dataset.id
-    console.log(jokeId)
     try{
         const response = await fetch('profile/deleteJoke', {
             method: 'delete',
@@ -53,18 +49,16 @@ async function deleteJoke(){
     }catch(err){
         console.log(err)
     }
-
-
 }
 
 //this function makes a put request which passes in the joke id and the amount of likes from the score in index.ejs
 //this information is passed to the router in routes/main.js on line 9 which is then passed to the appropraite controller in controllers/home.js line 22
 
 async function addLike(){
+    const jokeId = this.parentNode.dataset.id
 
-    //In the above array function where I added an event listener to each of the like and dislike buttons I also added an index number to the class list which I can access using the classList function. I then use this classlist index to match jokes with likes to be able to pass in the appropraite amount of likes so the controller function in home.js can update likes in the database
-    const jokeId = jokeItem[this.classList[this.classList.length -1]].dataset.id
-    const likesIx = Number(this.classList[this.classList.length -1])
+    //takes in jokes index from the classlist which corisponds to the same index of likes in the likes Arr because they are rendered in the same order
+    const likesIx = this.classList[1]
 
     try{
         const response = await fetch('/like', {
@@ -81,7 +75,6 @@ async function addLike(){
     }catch(err){
         console.log(err)
     }
-  
 }
 
 //this function makes a put request which passes in the joke id and the amount of likes from the score in index.ejs
@@ -89,11 +82,11 @@ async function addLike(){
 
 
 async function removeLike(){
-    //In the above array function where I added an event listener to each of the like and dislike buttons I also added an index number to the class list which I can access using the classList function. I then use this classlist index to match jokes with likes to be able to pass in the appropraite amount of likes so the controller function in home.js can update likes in the database
+    const jokeId = this.parentNode.dataset.id
 
-
-    const jokeId = jokeItem[this.classList[this.classList.length -1]].dataset.id
-    const likesIx = Number(this.classList[this.classList.length -1])
+     //takes in jokes index from the classlist which corisponds to the same index of likes in the likes Arr because they are rendered in the same order
+     
+    const likesIx = this.classList[1]
     try{
         const response = await fetch('/dislike', {
             method: 'put',
