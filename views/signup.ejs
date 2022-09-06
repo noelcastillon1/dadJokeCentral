@@ -13,12 +13,15 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/signup" method="POST">
-        <input type="text" name="userName" placeholder="User Name">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="password" name="confirmPassword" placeholder="Confirm Password">
-        <input type="submit">
-    </form>
+    <div class="form">
+        <h1 id="instructions">Sign up to share your dad jokes and vote on others jokes</h1>
+        <form action="/signup" method="POST">
+            <input type="text" name="userName" placeholder="User Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="confirmPassword" placeholder="Confirm Password">
+            <input class="button" type="submit">
+        </form>
+    </div>
 </body>
 </html>
