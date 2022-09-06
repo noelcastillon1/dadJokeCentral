@@ -1,5 +1,5 @@
 const deleteBtn = document.querySelectorAll('.del')
-const jokeItem = document.querySelectorAll('.jokeItem')
+const jokeItem = document.querySelectorAll('span.not')
 const jokeLike = document.querySelectorAll('.like')
 // const jokeDislike = document.querySelectorAll('.dislike')
 const allJokes = document.querySelectorAll('.allJoke')
@@ -24,7 +24,9 @@ Array.from(userLikedJokes).forEach((it) => {
 console.log(likedJokesIdArr)
 
 likesArr = likesArr.map(it => +it)
+
 console.log(likesArr)
+
 //creates an event listener for all elements with '.del' class
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteJoke)
@@ -45,7 +47,6 @@ Array.from(jokeLike).forEach((el, ix)=>{
 
 async function deleteJoke(){
     const jokeId = this.parentNode.dataset.id
-    console.log(jokeId)
     try{
         const response = await fetch('profile/deleteJoke', {
             method: 'delete',
@@ -60,13 +61,10 @@ async function deleteJoke(){
     }catch(err){
         console.log(err)
     }
-
-
 }
 
 
 async function addLike(){
-
     const jokeId = allJokes[this.classList[this.classList.length -1]].dataset.id
     const likesIx = Number(this.classList[this.classList.length -1])
     console.log(jokeId)
@@ -90,7 +88,6 @@ async function addLike(){
     }catch(err){
         console.log(err)
     }
-  
 }
 
 

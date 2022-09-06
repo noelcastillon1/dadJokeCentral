@@ -24,7 +24,7 @@ module.exports = {
     },
     createJoke: async (req, res)=>{
         try{
-            await Joke.create({joke: req.body.jokeItem, likes: 0, date: now, userId: req.user.id})
+            await Joke.create({joke: req.body.jokeItem, likes: 0, date: now, userId: req.user.id, userName: req.user.userName})
             console.log('Joke has been added!')
             res.redirect('/profile')
         }catch(err){
