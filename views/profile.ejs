@@ -1,76 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/a0dee5f62e.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/a0dee5f62e.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Dad Jokes Profile</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
     <h1>Welcome back <%= user.userName %></h1>
     <ul>
-    <% jokes.forEach( el => { %>
-            <li class='jokeItem' data-id='<%=el._id%>'>
-                <span><%= el.joke %></span>
-                <span class='del'> Delete </span>
-            </li>
-    <% }) %>    
+      <% jokes.forEach( el => { %>
+      <li class="jokeItem" data-id="<%=el._id%>">
+        <span><%= el.joke %></span>
+        <span class="del"> Delete </span>
+      </li>
+      <% }) %>
     </ul>
 
-
-    <form action="/profile/createJoke" method='POST'>
-        <input type="text" placeholder="Enter new Joke" name='jokeItem'>
-        <input type="submit">
+    <form action="/profile/createJoke" method="POST">
+      <input type="text" placeholder="Enter new Joke" name="jokeItem" />
+      <input type="submit" />
     </form>
 
     <div class="individualJoke section likedJokes">
-        <ul>
-            <% likedJokes.forEach( el => { %>
-                    <li class='jokeItem likedJoke' data-id='<%=el._id%>'>
-                        <h3 class="jokeDetails"><%= el.joke %></h3>
-                        <div id="individualJokeAuthandDate" class="section">
-                            <h4 class="jokeDetails date"><%= el.date %></h4>
-                            <h4 class="jokeDetails "><%= el.likes %></h4>
-                        </div>
-                        <!-- <span>like</span> -->
-                    </li>
-            <% }) %>    
-        </ul> 
+      <ul>
+        <% likedJokes.forEach( el => { %>
+        <li class="jokeItem likedJoke" data-id="<%=el._id%>">
+          <h3 class="jokeDetails"><%= el.joke %></h3>
+          <div id="individualJokeAuthandDate" class="section">
+            <h4 class="jokeDetails date"><%= el.date %></h4>
+            <h4 class="jokeDetails"><%= el.likes %></h4>
+          </div>
+          <!-- <span>like</span> -->
+        </li>
+        <% }) %>
+      </ul>
     </div>
-
-
-
-
-
-
-
 
     <div class="individualJoke section allJokes">
-        <ul>
-            <% jokesAll.forEach( el => { %>
-                    <li class='jokeItem allJoke' data-id='<%=el._id%>'>
-                        <h3 class="jokeDetails"><%= el.joke %></h3>
-                        <div id="individualJokeAuthandDate" class="section">
-                            <h4 class="jokeDetails date"><%= el.date %></h4>
-                            <h4 class="jokeDetails score"><%= el.likes %></h4>
-                            <i class="fa-solid fa-thumbs-up like"></i>
-                            <!-- <i class="fa-solid fa-thumbs-down dislike"></i> -->
-                        </div>
-                        <!-- <span>like</span> -->
-                    </li>
-            <% }) %>    
-        </ul> 
+      <ul>
+        <% jokesAll.forEach( el => { %>
+        <li class="jokeItem allJoke" data-id="<%=el._id%>">
+          <h3 class="jokeDetails"><%= el.joke %></h3>
+          <div id="individualJokeAuthandDate" class="section">
+            <h4 class="jokeDetails date"><%= el.date %></h4>
+            <h4 class="jokeDetails score"><%= el.likes %></h4>
+            <i class="fa-solid fa-thumbs-up like"></i>
+            <!-- <i class="fa-solid fa-thumbs-down dislike"></i> -->
+          </div>
+          <!-- <span>like</span> -->
+        </li>
+        <% }) %>
+      </ul>
     </div>
 
-
-
-    <a href="/logout">Logout</a>
-    
     <div class="btn-container">
-        <button onclick="window.location.href='/';" class="btn">Back home</button>
-        <button onclick="window.location.href='/logout';" class="btn" id="Login">Logout</button>
+      <button onclick="window.location.href='/';" class="btn">Back home</button>
+      <button onclick="window.location.href='/logout';" class="btn" id="Login">
+        Logout
+      </button>
     </div>
 
     <!-- <section>
@@ -82,5 +75,5 @@
     </section> -->
 
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
