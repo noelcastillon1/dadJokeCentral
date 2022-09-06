@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Welcome back <%= user.userName %></h1>
+    <h1>Welcome back, <%= user.userName %></h1>
     <ul>
     <% jokes.forEach( el => { %>
             <li class='jokeItem' data-id='<%=el._id%>'>
@@ -19,10 +19,17 @@
     <% }) %>    
     </ul>
 
+<<<<<<< HEAD
     <form action="/profile/createJoke" method="POST">
       <input type="text" placeholder="Enter new Joke" name="jokeItem" />
       <input type="submit" />
     </form>
+=======
+        <form class="profileJokeForm" action="/profile/createJoke" method='POST'>
+            <input type="text" placeholder="Enter knee-slapper here" name='jokeItem'>
+            <input type="submit">
+        </form>
+>>>>>>> 6337c08deb99d17b707eceec4c888b95b9a52feb
 
     <div class="individualJoke section likedJokes">
       <ul>

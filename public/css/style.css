@@ -144,3 +144,32 @@ button:hover {
 .not {
   text-decoration: underline;
 }
+
+
+/* ---RESPONSIVE STUFF--- */
+
+/* tablet */
+@media screen and (max-width: 900px) {
+  .section{
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(130, 99, 68);
+    border-radius: 10px;
+    margin: 20px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 480px) {
+  #buttonElement, .profileJokeForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .profileJokeForm {
+    max-width: 100%;
+  }
+}
