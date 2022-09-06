@@ -144,3 +144,38 @@ button:hover {
 .not {
   text-decoration: underline;
 }
+<<<<<<< HEAD
+=======
+
+li{
+  list-style: none;
+}
+
+/* ---RESPONSIVE STUFF--- */
+
+/* tablet */
+@media screen and (max-width: 900px) {
+  .section{
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(130, 99, 68);
+    border-radius: 10px;
+    margin: 20px;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 480px) {
+  #buttonElement, .profileJokeForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .profileJokeForm {
+    max-width: 100%;
+  }
+}
+>>>>>>> 6337c08deb99d17b707eceec4c888b95b9a52feb
