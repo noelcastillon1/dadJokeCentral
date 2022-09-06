@@ -10,6 +10,13 @@
 </head>
 <body>
     <h1>Welcome back, <%= user.userName %></h1>
+    <div class="btn-container">
+        <button onclick="window.location.href='/';" class="btn">Back home</button>
+        <button onclick="window.location.href='/logout';" class="btn" id="Login">
+          Logout
+        </button>
+      </div>
+      
     <ul>
     <% jokes.forEach( el => { %>
             <li class='jokeItem' data-id='<%=el._id%>'>
@@ -56,12 +63,7 @@
       </ul>
     </div>
 
-    <div class="btn-container">
-      <button onclick="window.location.href='/';" class="btn">Back home</button>
-      <button onclick="window.location.href='/logout';" class="btn" id="Login">
-        Logout
-      </button>
-    </div>
+    
 
     <!-- <section>
         <h3>Update Joke</h3>
