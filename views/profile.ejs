@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="retro">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a0dee5f62e.js" crossorigin="anonymous"></script>
     <title>Dad Jokes Profile</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="/output.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Welcome back, <%= user.userName %></h1>
-    <div class="btn-container">
-        <button onclick="window.location.href='/';" class="btn">Back home</button>
+    <h1 class="uppercase text-4xl text-neutral text-center p-4">Welcome back, <%= user.userName %></h1>
+    <div class="btn-container flex justify-center">
+        <button onclick="window.location.href='/';" class="btn mr-2">Back home</button>
         <button onclick="window.location.href='/logout';" class="btn" id="Login">
           Logout
         </button>
       </div>
       
-    <ul>
+    <ul class="">
     <% jokes.forEach( el => { %>
-            <li class='jokeItem' data-id='<%=el._id%>'>
-                <span><%= el.joke %></span>
-                <span class='del'> Delete </span>
+            <li class='jokeItem card bg-neutral text-base-100 p-2 md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5 my-4 flex' data-id='<%=el._id%>'>
+                <span class='del fa-regular fa-trash-can text-right'><i></i></span>
+                <span class=""><%= el.joke %></span>
             </li>
     <% }) %>    
     </ul>
 
-        <form class="profileJokeForm" action="/profile/createJoke" method='POST'>
-            <input type="text" placeholder="Enter knee-slapper here" name='jokeItem'>
-            <input type="submit">
+        <form class="profileJokeForm form-control md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5" action="/profile/createJoke" method='POST'>
+            <input type="text" placeholder="Enter knee-slapper here" name='jokeItem' class="input bg-white">
+            <input class="btn mt-2" type="submit">
         </form>
 
     <div class="individualJoke section likedJokes">
-      <ul>
+      <ul class="md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5 bg-neutral rounded-sm mt-8 p-4">
+        <li class="uppercase text-center text-xl text-base-100 pb-2">Your Liked Jokes</li>
         <% likedJokes.forEach( el => { %>
-        <li class="jokeItem likedJoke" data-id="<%=el._id%>">
+        <li class="jokeItem likedJoke card p-2 bg-secondary text-neutral" data-id="<%=el._id%>">
           <h3 class="jokeDetails"><%= el.joke %></h3>
-          <div id="individualJokeAuthandDate" class="section">
-            <h4 class="jokeDetails date"><%= el.date %></h4>
-            <h4 class="jokeDetails"><%= el.likes %></h4>
+          <div id="individualJokeAuthandDate" class="flex justify-end section">
+            <h4 class="jokeDetails date pr-4"><%= el.date %></h4>
+            <h4 class="jokeDetails"><%= el.likes %> likes</h4>
           </div>
           <!-- <span>like</span> -->
         </li>
@@ -46,15 +47,16 @@
       </ul>
     </div>
 
-    <div class="individualJoke section allJokes">
-      <ul>
+    <div class="individualJoke section allJokes mb-8">
+      <ul class="md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5 mt-8 p-4 bg-secondary rounded-sm">
+        <li class="uppercase text-center text-xl text-neutral">All Jokes</li>
         <% jokesAll.forEach( el => { %>
-        <li class="jokeItem allJoke" data-id="<%=el._id%>">
+        <li class="jokeItem allJoke card bg-neutral text-base-100 p-2 m-2" data-id="<%=el._id%>">
           <h3 class="jokeDetails"><%= el.joke %></h3>
-          <div id="individualJokeAuthandDate" class="section">
+          <div id="individualJokeAuthandDate" class="section flex justify-end">
             <h4 class="jokeDetails date"><%= el.date %></h4>
-            <h4 class="jokeDetails score"><%= el.likes %></h4>
-            <i class="fa-solid fa-thumbs-up like"></i>
+            <h4 class="jokeDetails score px-4"><%= el.likes %></h4>
+            <i class="fa-solid fa-thumbs-up like"> LIKE</i>
             <!-- <i class="fa-solid fa-thumbs-down dislike"></i> -->
           </div>
           <!-- <span>like</span> -->
