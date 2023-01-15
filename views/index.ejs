@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="retro">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/a0dee5f62e.js" crossorigin="anonymous"></script>
     <title>DJC</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="/output.css" rel="stylesheet">
 </head>
 <body>
-    <div id="titleSection" class="section">
-        <h1 id="title">Dad Jokes Central!</h1>
-        <img src="images/dadLaughing.png" alt="Dad Laughing">
+    <div id="titleSection" class="section h-1/5 m-4 ">
+        <h1 id="title" class="bg-secondary rounded-sm uppercase text-4xl text-neutral p-4 text-center md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5" >Dad Joke Central</h1>
     </div>
          
-    <div id="loginArea" class="section">
-        <h1 id="instructions">Login or signup to share your dad jokes! Vote on others jokes, while you're at it!</h1>
-        <div class="buttons" id="buttonElement">
-            <button onclick="window.location.href='/signup';" class="auth" id="Signup">Signup</button>
-            <button onclick="window.location.href='/login';" class="auth" id="Login">Login</button>
+    <div id="loginArea" class="section m-4  text-base-100">
+        <h1 id="instructions" class="p-4 text-2xl rounded-sm bg-neutral md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5">Presenting Dad Joke Central! The site where you can find, share, save, and vote on the best jokes! Bring your witty, corny, and punny jokes to the world.</h1>
+        <div class="buttons flex justify-center pb-4 my-4" id="buttonElement">
+            <button onclick="window.location.href='/signup';" class="auth btn border-none bg-secondary text-neutral mr-2" id="Signup">Signup</button>
+            <button onclick="window.location.href='/login';" class="auth btn border-none bg-secondary text-neutral" id="Login">Login</button>
         </div>
     </div>
 
     <section id="jokeArea" class="section">
-        <h1 id="recentJokesTitle">Recent jokes submitted by users</h1>
+        <h1 id="recentJokesTitle" class="p-4 text-neutral text-3xl uppercase text-center">Recent jokes submitted by users</h1>
         
-        <div class="individualJoke section">
+        <div class="individualJoke section md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5">
             <ul>
                 <% jokes.forEach( el => { %>
-                        <li class='jokeItem' data-id='<%=el._id%>'>
-                            <h3 class="jokeDetails"><%= el.joke %></h3>
-                            <div id="individualJokeAuthandDate" class="section">
+                        <li class='jokeItem card bg-neutral p-2 text-base-100 mb-4 flex' data-id='<%=el._id%>'>
+                            <h3 class="jokeDetails text-xl"><%= el.joke %></h3>
+                            <div id="individualJokeAuthandDate" class="section flex self-end text-xl">
                                 <h4 class="jokeDetails userName"><%= el.userName %></h4>
-                                <h4 class="jokeDetails score"><%= el.likes %></h4>
+                                <h4 class="jokeDetails score px-2"><%= el.likes %></h4>
+                                <span><i class="fa-solid fa-thumbs-up"></i></span>
                             </div>
                             <!-- <span><i class="fa-solid fa-thumbs-up like"></i></span> -->
                         </li>

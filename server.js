@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require("path")
 const app = express()
 const mongoose = require('mongoose')
 const passport = require('passport')
@@ -19,13 +20,14 @@ connectDB()
 //sets views as ejs files and sets public files as static file
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'dist')))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
 // Sessions
 app.use(
     session({
-      secret: 'keyboard cat',
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -41,6 +43,9 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/profile', jokeRoutes)
  
-app.listen(process.env.PORT, ()=>{
-    console.log('Server is running, you better catch it!')
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT , ()=>{
+    console.log('Server is running, you better catch it!', PORT)
+
 })    

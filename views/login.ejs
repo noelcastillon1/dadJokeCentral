@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="retro">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="/output.css" rel="stylesheet">
 </head>
 <body>
     <% if (locals.messages.errors) { %>
@@ -18,12 +18,12 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <div class="form">
-        <h1 id="instructions">Login to share your dad jokes and vote on others jokes</h1>
-        <form action="/login" method="POST">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input class="button" type="submit">
+    <div class="form w-full">
+        <h1 id="instructions" class="label text-3xl uppercase text-neutral md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5 text-center py-8">Login to Dad Joke Central!</h1>
+        <form action="/login" method="POST" class="form-control md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5 mb-4">
+            <input class="input mb-4 bg-white" type="email" name="email" placeholder="Email">
+            <input class="input mb-4 bg-white" type="password" name="password" placeholder="Password">
+            <input class="button btn" type="submit">
         </form>
     </div>
 </body>

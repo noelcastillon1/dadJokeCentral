@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCclass="bg-white mb-4 input" TYPE html>
+<html lang="en" data-theme="retro">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="/output.css" rel="stylesheet">
 </head>
 <body>
     <% if (locals.messages.errors) { %>
@@ -13,14 +13,14 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <div class="form">
-        <h1 id="instructions">Sign up to share your dad jokes and vote on others jokes</h1>
-        <form action="/signup" method="POST">
-            <input type="text" name="userName" placeholder="User Name">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="confirmPassword" placeholder="Confirm Password">
-            <input class="button" type="submit">
+    <div class="form w-full">
+        <h1 id="instructions" class="uppercase py-8 text-3xl text-neutral md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5 text-center ">Sign up to share and vote on jokes!</h1>
+        <form action="/signup" method="POST" class="form-control mb-4 md:w-1/2 lg:w-1/2 xl:1/2 m-auto w-4/5">
+            <input class="bg-white mb-4 input" type="text" name="userName" placeholder="User Name">
+            <input class="bg-white mb-4 input" type="email" name="email" placeholder="Email">
+            <input class="bg-white mb-4 input" type="password" name="password" placeholder="Password">
+            <input class="bg-white mb-4 input" type="password" name="confirmPassword" placeholder="Confirm Password">
+            <input class="button btn" type="submit">
         </form>
     </div>
 </body>
